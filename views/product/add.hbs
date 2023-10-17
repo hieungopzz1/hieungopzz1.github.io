@@ -1,0 +1,49 @@
+<!-- Section Book Start -->
+<section class="book" id="book">
+    <div class="container">
+
+        <div class="main-text">
+            <h1 class="text-center m-5 font-monospace fw-bolder"><span class="text-warning">ADD P</span>roduct</h1>
+        </div>
+        <nav class="navbar navbar-expand-lg" id="navbar">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="mynavbar">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="text-drak" style="text-decoration: none;" href="/products/list">
+                                <button class="btn btn-warning text-light"><i class="fa-solid fa-less-than"></i>
+                                    Previous</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="row">
+
+            <div class="col-md-3 py-3 py-md-0">
+
+            </div>
+
+            <div class="col-md-6 py-3 py-md-2">
+                <form action="add" method="post" enctype="multipart/form-data">
+
+                    <input type="text" class="form-control" placeholder="Product Title " name="title" required ><br>
+                    <input type="text" class="form-control" placeholder="Product Name" name="name" required maxlength="10"><br>
+                    <input type="text" class="form-control" placeholder="Product Price" name="price" required onkeypress="check()"><br>
+                    <input type="file" class="form-control" placeholder="Product Image" name="image" required><br>
+                    <input type="number" class="form-control" name="quantity" placeholder="Product Quantity"><br>
+                    <input type="submit" value="Add" class="btn btn-warning fw-bolder text-light" required>
+
+                </form>
+
+            </div>
+
+            <div class="col-md-3 py-3 py-md-0">
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section Book End -->

@@ -1,0 +1,82 @@
+<!-- Section Book Start -->
+<section class="book" id="book">
+    <div class="container">
+        <div class="main-text">
+            <h1><span>LIST</span> PRODUCTS</h1>
+        </div>
+        <nav class="navbar navbar-expand-lg" id="navbar">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="mynavbar">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/"><i class="fa-solid fa-house"></i>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users/list"><i class="fa-solid fa-greater-than">List User</i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-warning" href="add"><i class="fa-solid fa-plus">Add</i></a>
+                        </li>
+                    </ul>
+                    <form class="d-flex" action="/products/search" method="post">
+                        <input class="form-control me-2" type="search" name="name" placeholder="Search">
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-1 py-3 py-md-0">
+            </div>
+            <div class="col-md-10 py-3 py-md-0">
+                <table class="table align-middle">
+
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">NAME</th>
+                            <th scope="col">PRICE</th>
+                            <th scope="col">IMAGE</th>
+                            <th scope="col">QUANTITY</th>
+                            <th scope="col" colspan="2">ACTION</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {{#each data }}
+
+                        <tr>
+                            <th scope="row"></th>
+                            <td>{{ name}}</td>
+                            <td>
+                                <h6><strong>${{price}}</strong></h6>
+                            </td>
+                            <td><img height="100" width="90" src="../images/{{image}}" alt=""></td>
+                            <td>{{ quantity }}</td>
+                            <td>
+                                <a style="text-decoration: none;" href="edit/{{_id}}">
+                                    <button type="submit" class="btn btn-link btn-sm px-3 text-warning"
+                                        data-ripple-color="dark">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                </a>
+                                <a href="delete/{{_id}}">
+                                    <button type="submit" class="btn btn-link btn-sm px-3 text-danger"
+                                        data-ripple-color="dark" onclick="return confirm('Are you sure')">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                        {{/each}}
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-md-1 py-3 py-md-0">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section Book End -->
