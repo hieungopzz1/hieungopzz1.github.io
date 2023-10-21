@@ -3,7 +3,7 @@
     <div class="container">
 
         <div class="main-text">
-            <h1 class="text-center m-5 font-monospace fw-bolder"><span class="text-warning">ADD P</span>roduct</h1>
+            <h1 class="text-center m-5 font-monospace fw-bolder"><span class="text-warning">ADD </span>User</h1>
         </div>
         <nav class="navbar navbar-expand-lg" id="navbar">
             <div class="container">
@@ -29,8 +29,10 @@
             <div class="col-md-6 py-3 py-md-2">
                 <form action="add" method="post" >
 
-                    <input type="text" class="form-control" placeholder="UserName" name="username" required><br>
-                    <input type="text" class="form-control" placeholder="Password" name="password" required><br>
+                    <input type="text" class="form-control" placeholder="UserName" name="username" required minlength="6"><br>
+                    <input type="text" class="form-control" placeholder="Password" name="password" required minlength="6"><br>
+                    <input type="radio"  name="isuser" value="isadmin" required>Admin<br>
+                    <input type="radio"  name="isuser" value="isuser" required>User<br>
                     <input type="submit" value="Add" class="btn btn-warning fw-bolder text-light" required>
 
                 </form>

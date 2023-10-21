@@ -1,0 +1,41 @@
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg" id="navbar">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="text-drak" style="text-decoration: none;" href="/">
+                        <button class="btn btn-warning text-light"><i class="fa-solid fa-less-than"></i>
+                            Previous</button>
+                    </a>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->
+
+<!-- Section Packages Start -->
+<section class="packages p-4" id="packages">
+    <div class="container">
+        <h1 class="heading text-center fw-bolder text-warning">Packages</h1>
+        <div class="row">
+            {{#each lbx }}
+            <div class="col-md-2">
+                <div class="card">
+                    <a href="lbx/show/{{_id}}">
+                        <img width="100%" height="200vh" src="../images/{{image}}" alt="{{_id}}">
+                    </a>
+                    <div class="card-body">
+                        <h3 class="fw-bolder">{{ name }}</h3>
+                        <h5> $<strong>{{price}}</strong></h5>
+                    </div>
+                    <button type="submit" class="btn btn-warning col-md-7 m-3">Add to cart</button>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+<!-- Section Packages End -->

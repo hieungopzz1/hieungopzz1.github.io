@@ -1,14 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var UserModel = require('../models/UserModel');
-var ProductModel = require('../models/ProductModel');
+var NgocRongModel = require('../models/NgocRongModel');
+var LbxModel = require('../models/LbxModel');
 
 /* GET home page. */
-router.get('/', async function (req, res, next) {
-  let data = await ProductModel.find();
-  res.render('index', { data: data });
-});
-
+router.get('/', async (req, res) => {
+  let ngocrong = await NgocRongModel.find();
+  let lbx = await LbxModel.find();
+  res.render('index', { ngocrong: ngocrong, lbx: lbx });
+})
 router.get('/register', (req, res) => {
   res.render("register");
 })
@@ -21,7 +22,7 @@ router.post('/register', async function (req, res, next) {
     cbpassword: req.body.cbpassword,
   })
   let exist = await UserModel.findOne({ username: user.username });
-  if (p1 === p2 && !exist ) {
+  if (p1 === p2 && !exist) {
     user.save();
     res.render('login');
   } else {
@@ -35,13 +36,14 @@ router.post('/login', async (req, res, next) => {
   var username = req.body.username;
   var password = req.body.password;
   let data = await UserModel.findOne({ username: req.body.username, password: req.body.password });
+  console.log(data.isadmin)
   if (!data) {
     res.send("<script>alert('Username or Password wrong!!!!');history.back();</script>");
   } else {
-    if (username === data.username && password === data.password ) {
+    if (username === data.username && password === data.password && data.isadmin === true) {
       res.redirect('/products/list');
     } else {
-      res.send("<script>alert('Username or Password wrong!!!!');history.back();</script>");
+      res.redirect('/');
     }
   }
 })
@@ -49,8 +51,9 @@ router.post('/login', async (req, res, next) => {
 router.post('/search', async (req, res) => {
   var keyword = req.body.name;
   //relative search
-  var data = await ProductModel.find({ name: new RegExp(keyword, "i") });
-  res.render('listproductbyname', { data: data })
+  var ngocrong = await NgocRongModel.find({ name: new RegExp(keyword, "i") });
+  var lbx = await LbxModel.find({ name: new RegExp(keyword, "i") });
+  res.render('searchname', { ngocrong: ngocrong, lbx: lbx})
 })
 
 module.exports = router;

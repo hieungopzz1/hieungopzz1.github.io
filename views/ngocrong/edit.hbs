@@ -3,14 +3,14 @@
     <div class="container">
 
         <div class="main-text">
-            <h1 class="text-center m-5 font-monospace fw-bolder"><span class="text-warning">EDIT P</span>user</h1>
+            <h1 class="text-center m-5 font-monospace fw-bolder"><span class="text-warning">EDIT P</span>roduct</h1>
         </div>
         <nav class="navbar navbar-expand-lg" id="navbar">
             <div class="container">
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="text-drak" style="text-decoration: none;" href="/users/list">
+                            <a class="text-drak" style="text-decoration: none;" href="/ngocrong/list">
                                 <button class="btn btn-warning text-light"><i class="fa-solid fa-less-than"></i>
                                     Previous</button>
                             </a>
@@ -28,14 +28,17 @@
             </div>
 
             <div class="col-md-6 py-3 py-md-0">
-                <form action="/users/edit/{{data._id}}" method="post">
-
+                <form action="/ngocrong/edit/{{ ngocrong._id }}" method="post">
                     <input type="text" class="form-control shadow bg-body rounded" placeholder="Product Name"
-                        name="username" value="{{data.username}}" disabled required><br>
-                    <input type="text" class="form-control shadow bg-body rounded" name="password"
-                        value="{{data.password}}"><br>
-                    <input type="radio"  name="isuser" value="isadmin" required>Admin<br>
-                    <input type="radio"  name="isuser" value="isuser" required>User<br>
+                        name="name" value="{{ngocrong.name}}" required maxlength="10"><br>
+                    <input type="text" class="form-control shadow bg-body rounded" placeholder="Product Price"
+                        name="price" value="{{ngocrong.price}}" required><br>
+                    <input type="numer" class="form-control shadow bg-body rounded" name="quantity"
+                        value="{{ngocrong.quantity}}"><br>
+                    <input type="text" class="form-control shadow bg-body rounded" placeholder="Product Description"
+                        name="description" value="{{ngocrong.description}}" required maxlength="10"><br>
+                    <label class="text-danger fw-bold" for="">Can't change image</label>
+                    <input type="file" class="form-control shadow bg-body rounded" disabled="disabled"><br>
                     <button type="submit" class="btn btn-warning fw-bolder text-light" required>Edit</button>
 
                 </form>

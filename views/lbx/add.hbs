@@ -10,7 +10,7 @@
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="text-drak" style="text-decoration: none;" href="/products/list">
+                            <a class="text-drak" style="text-decoration: none;" href="/lbx/list">
                                 <button class="btn btn-warning text-light"><i class="fa-solid fa-less-than"></i>
                                     Previous</button>
                             </a>
@@ -27,13 +27,13 @@
             </div>
 
             <div class="col-md-6 py-3 py-md-2">
-                <form action="add" method="post" enctype="multipart/form-data">
+                <form action="/lbx/add" method="post" enctype="multipart/form-data">
 
-                    <input type="text" class="form-control" placeholder="Product Title " name="title" required ><br>
-                    <input type="text" class="form-control" placeholder="Product Name" name="name" required maxlength="10"><br>
-                    <input type="text" class="form-control" placeholder="Product Price" name="price" required onkeypress="check()"><br>
-                    <input type="file" class="form-control" placeholder="Product Image" name="image" required><br>
-                    <input type="number" class="form-control" name="quantity" placeholder="Product Quantity"><br>
+                    <input type="text" class="form-control" placeholder=" Name" name="name" required maxlength="10"><br>
+                    <input type="text" class="form-control" placeholder=" Price" name="price" required onkeypress="check()"><br>
+                    <input type="number" class="form-control" name="quantity" placeholder=" Quantity"><br>
+                    <input type="text" class="form-control" name="description" placeholder=" Description"><br>
+                    <input type="file" class="form-control" placeholder=" Image" name="image" required><br>
                     <input type="submit" value="Add" class="btn btn-warning fw-bolder text-light" required>
 
                 </form>

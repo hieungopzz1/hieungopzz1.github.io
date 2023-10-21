@@ -1,0 +1,49 @@
+<!-- Section Book Start -->
+<section class="book" id="book">
+    <div class="container">
+
+        <div class="main-text">
+            <h1 class="text-center m-5 font-monospace fw-bolder"><span class="text-warning">ADD P</span>roduct</h1>
+        </div>
+        <nav class="navbar navbar-expand-lg" id="navbar">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="mynavbar">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="text-drak" style="text-decoration: none;" href="/ngocrong/list">
+                                <button class="btn btn-warning text-light"><i class="fa-solid fa-less-than"></i>
+                                    Previous</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="row">
+
+            <div class="col-md-3 py-3 py-md-0">
+
+            </div>
+
+            <div class="col-md-6 py-3 py-md-2">
+                <form action="/ngocrong/add" method="post" enctype="multipart/form-data">
+
+                    <input type="text" class="form-control" placeholder=" Name" name="name" required maxlength="10"><br>
+                    <input type="text" class="form-control" placeholder=" Price" name="price" required onkeypress="check()"><br>
+                    <input type="number" class="form-control" name="quantity" placeholder=" Quantity"><br>
+                    <input type="text" class="form-control" name="description" placeholder=" Description"><br>
+                    <input type="file" class="form-control" placeholder=" Image" name="image" required><br>
+                    <input type="submit" value="Add" class="btn btn-warning fw-bolder text-light" required>
+
+                </form>
+
+            </div>
+
+            <div class="col-md-3 py-3 py-md-0">
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section Book End -->

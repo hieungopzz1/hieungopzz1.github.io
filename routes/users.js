@@ -12,10 +12,6 @@ const fileStorageEngine = multer.diskStorage({
 })
 const upload = multer({ storage: fileStorageEngine })
 
-//router read in home
-
-
-
 //router read in list
 router.get('/list', async function (req, res, next) {
   let data = await UserModel.find();
@@ -23,17 +19,14 @@ router.get('/list', async function (req, res, next) {
 });
 
 //router add
-router.get('/add', async (req, res) => {
+router.get('/add', (req, res) => {
   res.render("user/add");
 })
 router.post('/add', async (req, res) => {
-  let data = await UserModel({
-    username: req.body.username,
-    password: req.body.password,
-  });
-  data.save();
+  let data = req.body;
+  await UserModel.create(data);
   res.redirect('/users/list');
-})
+});
 
 //router update
 router.get("/edit/:id", async function (req, res, next) {
@@ -43,12 +36,11 @@ router.get("/edit/:id", async function (req, res, next) {
 })
 router.post("/edit/:id", async (req, res) => {
   let id = req.params.id;
-  let data = await UserModel.findOneAndUpdate(id)
-  data.username = req.body.username;
-  data.password = req.body.password;
-  await data.save();
+  let data = req.body;
+  await UserModel.findByIdAndUpdate(id,data)
   res.redirect('/users/list');
 })
+
 
 //delete
 router.get('/delete/:id', async (req, res) => {

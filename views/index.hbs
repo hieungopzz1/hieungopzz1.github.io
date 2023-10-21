@@ -1,27 +1,24 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg" id="navbar">
     <div class="container">
-        <a class="navbar-brand" href="/" id="logo"><span>OOO</span>Rider</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-            <span><i class="fa-solid fa-bars"></i></span>
-        </button>
+        <span class="navbar-brand" href="/" id="logo"><span>OOO</span>Rider</span>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/"><i class="fa-solid fa-house"></i>HOME</a>
+                    <a class="nav-link  text-success" href="/ngocrong"><i class="fa-brands fa-github"></i>
+                        DRAGONBALL</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/products/cart"><i class="fa-solid fa-cart-shopping">Cart</i></a>
+                    <a class="nav-link text-primary" href="/lbx"><i class="fa-solid fa-virus"></i> LBX</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i>LOGIN</a>
-                </li>
             </ul>
-            <form action="/search" method="post" class="d-flex">
+            <form class="d-flex" action="/search" method="post">
                 <input class="form-control me-2" type="search" name="name" placeholder="Search">
-                <button class="btn btn-warning">Search</button>
             </form>
+            <li class="nav-item">
+                <a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i> LOGIN</a>
+            </li>
         </div>
     </div>
 </nav>
@@ -40,12 +37,33 @@
 <!-- Section Packages Start -->
 <section class="packages p-4" id="packages">
     <div class="container">
-        <h1 class="heading text-center fw-bolder text-warning">Packages</h1>
+        <h1 class="heading text-center fw-bolder text-success">DRAGONBALL</h1>
         <div class="row">
-            {{#each data }}
+            {{#each ngocrong }}
             <div class="col-md-2">
                 <div class="card">
-                    <a href="products/show/{{_id}}">
+                    <a href="ngocrong/show/{{_id}}">
+                        <img width="100%" height="200vh" src="../images/{{image}}" alt="{{_id}}">
+                    </a>
+                    <div class="card-body">
+                        <h3 class="fw-bolder">{{ name }}</h3>
+                        <h5> $<strong>{{price}}</strong></h5>
+                    </div>
+                    <button type="submit" class="btn btn-warning col-md-7 m-3">Add to cart</button>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+<section class="packages p-4" id="packages">
+    <div class="container">
+        <h1 class="heading text-center fw-bolder text-primary">LBX</h1>
+        <div class="row">
+            {{#each lbx }}
+            <div class="col-md-2">
+                <div class="card">
+                    <a href="lbx/show/{{_id}}">
                         <img width="100%" height="200vh" src="../images/{{image}}" alt="{{_id}}">
                     </a>
                     <div class="card-body">

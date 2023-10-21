@@ -1,0 +1,61 @@
+<!-- Section Book End -->
+<section class="h-100 gradient-custom-2">
+    <nav class="navbar navbar-expand-lg" id="navbar">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="text-drak" style="text-decoration: none;" href="/ngocrong">
+                            <button class="btn btn-warning text-light"><i class="fa-solid fa-less-than"></i>
+                                Previous</button>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-9 col-xl-7">
+                <div class="card">
+                    <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
+                        <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                            <img src="/images/{{ngocrong.image}}" alt="1" class="img-fluid img-thumbnail mt-4 mb-2"
+                                style="width: 150px; z-index: 1">
+                        </div>
+                        <div class="ms-3" style="margin-top: 130px;">
+                            <h2>{{ ngocrong.title }}</h2>
+                            <h1 class="text-uppercase">{{ ngocrong.name }}</h1>
+                        </div>
+                    </div>
+                    <div class="card-body p-4 text-black">
+                        <div class="mb-3">
+                            <p class="lead fw-normal mb-1">
+                            </p>
+                            <div class="p-2" style="background-color: #f8f9fa;">
+                                <p class="font-italic mb-1 font-weight h3 text-danger">remaining product: {{
+                                    ngocrong.quantity }} product</p>
+                                <p class="font-italic mb-1 font-weight h3">$ {{
+                                    ngocrong.price }}</p>
+                                <p class="font-italic mb-1 font-weight h3">Describe {{
+                                    ngocrong.description }}</p>
+                            </div>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col mb-2">
+                                <img src="https://toquoc.mediacdn.vn/280518851207290880/2022/8/8/photo-1-1659692366575711110370-1659941484327-16599414844211279608286.jpg"
+                                    alt="image 1" class="w-100 rounded-3">
+                            </div>
+                            <div class="col mb-2">
+                                <img src="https://ecdn.game4v.com/g4v-content/uploads/2020/09/Dragon-Ball-Super-3-game4v.png"
+                                    alt="image 1" class="w-100 rounded-3">
+                            </div>
+                        </div>
+                        <input class="btn btn-warning" type="submit" value="Add to cart">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

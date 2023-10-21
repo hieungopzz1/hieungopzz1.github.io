@@ -5,12 +5,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var productsRouter = require('./routes/products');
+var lbxRouter = require('./routes/lbx');
+var ngocrongRouter = require('./routes/ngocrong');
 var hbs = require('hbs')
 
 //compare
 hbs.registerHelper('eq', function(a, b) {
-  return a === b;
+  return a == b;
 });
 hbs.registerHelper('gt', function(a, b) {
   return a > b;
@@ -50,7 +51,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/products', productsRouter);
+app.use('/lbx', lbxRouter);
+app.use('/ngocrong', ngocrongRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
