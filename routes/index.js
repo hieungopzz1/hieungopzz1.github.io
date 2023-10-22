@@ -36,14 +36,15 @@ router.post('/login', async (req, res, next) => {
   var username = req.body.username;
   var password = req.body.password;
   let data = await UserModel.findOne({ username: req.body.username, password: req.body.password });
-  console.log(data.isadmin)
   if (!data) {
     res.send("<script>alert('Username or Password wrong!!!!');history.back();</script>");
   } else {
-    if (username === data.username && password === data.password && data.isadmin === true) {
-      res.redirect('/products/list');
+    if (username === data.username && password === data.password && data.isuser === "isadmin") {
+      res.redirect('/users/list');
     } else {
-      res.redirect('/');
+      let ngocrong = await NgocRongModel.find();
+      let lbx = await LbxModel.find();
+      res.render('index', { data: data, ngocrong: ngocrong, lbx: lbx });
     }
   }
 })
@@ -53,7 +54,15 @@ router.post('/search', async (req, res) => {
   //relative search
   var ngocrong = await NgocRongModel.find({ name: new RegExp(keyword, "i") });
   var lbx = await LbxModel.find({ name: new RegExp(keyword, "i") });
-  res.render('searchname', { ngocrong: ngocrong, lbx: lbx})
+  res.render('searchname', { ngocrong: ngocrong, lbx: lbx })
 })
 
+router.get('/cart', (req, res) => {
+  res.render('cart')
+})
+
+router.get("users/show/:id", async function (req, res, next) {
+  let data = await UserModel.findById(req.params.id);
+  res.render('user/show', { data: data });
+})
 module.exports = router;

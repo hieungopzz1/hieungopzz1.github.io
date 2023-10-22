@@ -7,27 +7,39 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var lbxRouter = require('./routes/lbx');
 var ngocrongRouter = require('./routes/ngocrong');
+//khai báo thư viện hbs
 var hbs = require('hbs')
-
-//compare
-hbs.registerHelper('eq', function(a, b) {
-  return a == b;
+//tạo helper cho hbs
+hbs.registerHelper('eq', function (a, b) {
+  return a === b;
 });
-hbs.registerHelper('gt', function(a, b) {
+hbs.registerHelper('gt', function (a, b) {
   return a > b;
 });
-hbs.registerHelper('lt', function(a, b) {
+hbs.registerHelper('lt', function (a, b) {
   return a < b;
 });
-hbs.registerHelper('noteq', function(a, b) {
-  return a != b;
+hbs.registerHelper('ex', function (a) {
+  if(a == true){
+    return true;
+  }else{
+    return false;
+  }
+});
+
+hbs.registerHelper('ifnoteq', function (a, b) {
+  if (a == b) {
+    return true;
+  } else {
+    return false;
+  }
 });
 
 //mongodb
 var mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://hieunvgch211262:Hieulol2k3@cluster0.gqfnwfi.mongodb.net/1644')
-.then(()=> console.log('db connected'))
-.catch(err => console.log(err))
+  .then(() => console.log('db connected'))
+  .catch(err => console.log(err))
 
 
 var app = express();
@@ -55,12 +67,12 @@ app.use('/lbx', lbxRouter);
 app.use('/ngocrong', ngocrongRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

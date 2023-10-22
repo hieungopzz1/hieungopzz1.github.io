@@ -5,20 +5,32 @@
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link  text-success" href="/ngocrong"><i class="fa-brands fa-github"></i>
+                    <a class="nav-link text-success" href="/ngocrong"><i class="fa-brands fa-github"></i>
                         DRAGONBALL</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-primary" href="/lbx"><i class="fa-solid fa-virus"></i> LBX</a>
+                    <a class="nav-link text-primary" href="/lbx"><i class="fa-brands fa-github"></i> LBX</a>
                 </li>
 
             </ul>
             <form class="d-flex" action="/search" method="post">
                 <input class="form-control me-2" type="search" name="name" placeholder="Search">
             </form>
+            {{#if (ifnoteq data.username req.body.username) }}
             <li class="nav-item">
                 <a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i> LOGIN</a>
             </li>
+            {{else}}
+            <li class="nav-item">
+                <a class="nav-link bg-dark text-info rounded" href="/users/show/{{data._id}}"><i
+                        class="fa-solid fa-user"></i> {{
+                    data.username}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i> LOGOUT</a>
+            </li>
+            {{/if}}
+
         </div>
     </div>
 </nav>
@@ -32,8 +44,6 @@
     </div>
 </div>
 <!-- Home Section End -->
-
-
 <!-- Section Packages Start -->
 <section class="packages p-4" id="packages">
     <div class="container">
@@ -49,7 +59,11 @@
                         <h3 class="fw-bolder">{{ name }}</h3>
                         <h5> $<strong>{{price}}</strong></h5>
                     </div>
-                    <button type="submit" class="btn btn-warning col-md-7 m-3">Add to cart</button>
+                    {{#if (ex data) }}
+                    <a class="btn btn-warning col-md-7 m-3" href="/cart">Add to cart</a>
+                    {{else}}
+                    <a class="btn btn-warning col-md-7 m-3" href="/login">Add to cart</a>
+                    {{/if}}
                 </div>
             </div>
             {{/each}}
@@ -70,7 +84,8 @@
                         <h3 class="fw-bolder">{{ name }}</h3>
                         <h5> $<strong>{{price}}</strong></h5>
                     </div>
-                    <button type="submit" class="btn btn-warning col-md-7 m-3">Add to cart</button>
+                    <a class="btn btn-warning col-md-7 m-3" href="/cart">Add to cart</a>
+
                 </div>
             </div>
             {{/each}}

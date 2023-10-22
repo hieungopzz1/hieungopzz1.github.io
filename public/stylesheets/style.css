@@ -47,3 +47,10 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.fw-bolder {
+  text-transform: capitalize;
+}
+
+
+
