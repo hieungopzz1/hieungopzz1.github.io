@@ -19,14 +19,6 @@ hbs.registerHelper('gt', function (a, b) {
 hbs.registerHelper('lt', function (a, b) {
   return a < b;
 });
-hbs.registerHelper('ex', function (a) {
-  if(a == true){
-    return true;
-  }else{
-    return false;
-  }
-});
-
 hbs.registerHelper('ifnoteq', function (a, b) {
   if (a == b) {
     return true;
@@ -34,7 +26,9 @@ hbs.registerHelper('ifnoteq', function (a, b) {
     return false;
   }
 });
-
+hbs.registerHelper('ne', function(a, b) {
+  return (a !== b);
+});
 //mongodb
 var mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://hieunvgch211262:Hieulol2k3@cluster0.gqfnwfi.mongodb.net/1644')

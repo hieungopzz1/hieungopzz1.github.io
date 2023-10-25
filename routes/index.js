@@ -8,7 +8,8 @@ var LbxModel = require('../models/LbxModel');
 router.get('/', async (req, res) => {
   let ngocrong = await NgocRongModel.find();
   let lbx = await LbxModel.find();
-  res.render('index', { ngocrong: ngocrong, lbx: lbx });
+  let user = await UserModel.find();
+  res.render('index', { ngocrong: ngocrong, lbx: lbx,user:user });
 })
 router.get('/register', (req, res) => {
   res.render("register");
@@ -44,7 +45,8 @@ router.post('/login', async (req, res, next) => {
     } else {
       let ngocrong = await NgocRongModel.find();
       let lbx = await LbxModel.find();
-      res.render('index', { data: data, ngocrong: ngocrong, lbx: lbx });
+      let user = await UserModel.findOne({ username: username})
+      res.render('index', { user: user, ngocrong: ngocrong, lbx: lbx });
     }
   }
 })
@@ -57,10 +59,18 @@ router.post('/search', async (req, res) => {
   res.render('searchname', { ngocrong: ngocrong, lbx: lbx })
 })
 
-router.get('/cart', (req, res) => {
-  res.render('cart')
+router.get('/cart',async (req, res) => {
+  let ngocrong = await NgocRongModel.find();
+  let lbx = await LbxModel.find();
+  res.render('cart', {ngocrong: ngocrong,lbx: lbx});
 })
-
+router.post('/cart', async (req, res) => {
+  let lbx = await LbxModel.find();
+  console.log(lbx)
+  let total = lbx.price * lbx.quantity;
+  console.log(total);
+  res.render('cart', {lbx:lbx,total:total});
+})
 router.get("users/show/:id", async function (req, res, next) {
   let data = await UserModel.findById(req.params.id);
   res.render('user/show', { data: data });
